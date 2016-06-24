@@ -15,10 +15,10 @@ describe Zebra::Epl::Text do
     text.rotation.should == rotation
   end
 
-  it "can be initialized with the font to be used" do
-    font = Zebra::Epl::Font::SIZE_1
-    text = described_class.new :font => font
-    text.font.should == font
+  it "can be initialized with the font_size to be used" do
+    font_size = Zebra::Epl::FontSize::SIZE_1
+    text = described_class.new :font_size => font_size
+    text.font_size.should == font_size
   end
 
   it "can be initialized with the horizontal multiplier" do
@@ -53,11 +53,11 @@ describe Zebra::Epl::Text do
     end
   end
 
-  describe "#font=" do
-    it "raises an error if the received font is invalid" do
+  describe "#font_size=" do
+    it "raises an error if the received font_size is invalid" do
       expect {
-        described_class.new.font = 6
-      }.to raise_error(Zebra::Epl::Font::InvalidFontError)
+        described_class.new.font_size = 6
+      }.to raise_error(Zebra::Epl::FontSize::InvalidFontSizeError)
     end
   end
 
@@ -86,7 +86,7 @@ describe Zebra::Epl::Text do
   end
 
   describe "#to_epl" do
-    subject(:text) { described_class.new :position => [100, 150], :font => Zebra::Epl::Font::SIZE_3, :data => "foobar" }
+    subject(:text) { described_class.new :position => [100, 150], :font_size => Zebra::Epl::FontSize::SIZE_3, :data => "foobar" }
 
     it "raises an error if the X position was not informed" do
       text = described_class.new :position => [nil, 100], :data => "foobar"
@@ -102,11 +102,11 @@ describe Zebra::Epl::Text do
       }.to raise_error(Zebra::Epl::Printable::MissingAttributeError, "Can't print if the Y value is not given")
     end
 
-    it "raises an error if the font is not informed" do
+    it "raises an error if the font_size is not informed" do
       text = described_class.new :position => [100, 100], :data => "foobar"
       expect {
         text.to_epl
-      }.to raise_error(Zebra::Epl::Printable::MissingAttributeError, "Can't print if the font to be used is not given")
+      }.to raise_error(Zebra::Epl::Printable::MissingAttributeError, "Can't print if the font_size to be used is not given")
     end
 
     it "raises an error if the data to be printed was not informed" do

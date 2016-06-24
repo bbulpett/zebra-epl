@@ -32,7 +32,7 @@ You create new labels with an instance of the `Zebra::Epl::Label` class. It acce
 With a label, you can start adding elements to it:
 
 	label = Zebra::Epl::Label.new :print_density => 8, :print_speed => 3
-	text  = Zebra::Epl::Text.new :data => "Hello, printer!", :position => [100, 100], :font => Zebra::Epl::Font::SIZE_2
+	text  = Zebra::Epl::Text.new :data => "Hello, printer!", :position => [100, 100], :font_size => Zebra::Epl::FontSize::SIZE_2
 	label << text
 	
 You can add as many elements as you want.
@@ -101,7 +101,7 @@ You create text elements to print using instances of the `Zebra::Epl::Text` clas
 * `v_multiplier`: The vertical multiplier to use. 
 * `h_multiplier`: The horizontal multipler to use.
 * `print_mode`: The print mode. Can be normal ("N") or reverse ("R").
-* `font`: The font size to use. You can use values between 1 and 5.
+* `font_size`: The font size to use. You can use values between 1 and 5.
 
 For the print modes, you can also use the constants:
 
