@@ -8,7 +8,7 @@ module Zebra
       class InvalidNarrowBarWidthError < StandardError; end
       class InvalidWideBarWidthError   < StandardError; end
 
-      attr_accessor :height
+      attr_accessor :height, :width
       attr_reader :type, :narrow_bar_width, :wide_bar_width
       attr_writer :print_human_readable_code
 
