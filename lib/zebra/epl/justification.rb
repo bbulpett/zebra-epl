@@ -9,7 +9,7 @@ module Zebra
         JUSTIFIED   = "J"
 
       def self.valid_justification?(justification)
-        ['L', 'C', 'R', 'J'].include?(justification)
+        [LEFT, CENTER, RIGHT, JUSTIFIED].include?(justification)
       end
 
       def self.validate_justification(justification)
