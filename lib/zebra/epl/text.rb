@@ -39,18 +39,9 @@ module Zebra
         @v_multiplier || VerticalMultiplier::VALUE_1
       end
 
-      def justification=(justify)
-        Justification.validate_justification justify
-        @justification = justify
-      end
-
-      def justification
-        @justification || Justification::LEFT
-      end
-
       def to_epl
         check_attributes
-        ["A#{x}", y, rotation, font_size, h_multiplier, v_multiplier, print_mode, "\"#{data}\""].join(",")
+        ["A#{x}", y, rotation, font_size, h_multiplier, v_multiplier, print_mode, justification, "\"#{data}\""].join(",")
       end
 
       private
