@@ -12,15 +12,6 @@ module Zebra
         @font_size = f
       end
 
-      def justification=(justification)
-        Justification.validate_justification justification
-        @justification = justification
-      end
-
-      def justification
-        @justification || Justification::LEFT
-      end
-
       def print_mode=(mode)
         PrintMode.validate_mode mode
         @print_mode = mode
@@ -50,7 +41,7 @@ module Zebra
 
       def to_epl
         check_attributes
-        ["A#{x}", y, rotation, font_size, h_multiplier, v_multiplier, print_mode, justification, "\"#{data}\""].join(",")
+        ["A#{x}", y, rotation, justification, font_size, h_multiplier, v_multiplier, print_mode, "\"#{data}\""].join(",")
       end
 
       private
