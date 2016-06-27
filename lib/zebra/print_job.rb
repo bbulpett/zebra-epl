@@ -30,7 +30,6 @@ module Zebra
     def send_to_printer(path)
       puts "* * * * * * * * * * * * * * * * * * * * * * * * Sending file to printer #{@printer} * * * * * * * * * * * * * * * * * * * * * * * * * "
       `lp -h #{@remote_ip} -d #{@printer} -o raw #{path}`
-
     end
   end
 end

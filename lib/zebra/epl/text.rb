@@ -21,26 +21,31 @@ module Zebra
         @print_mode || PrintMode::NORMAL
       end
 
+      def h_multiplier=(multiplier)
+        HorizontalMultiplier.validate_multiplier multiplier
+        @h_multiplier = multiplier
+      end
+
       def h_multiplier
         @h_multiplier || HorizontalMultiplier::VALUE_1
+      end
+
+      def v_multiplier=(multiplier)
+        VerticalMultiplier.validate_multiplier multiplier
+        @v_multiplier = multiplier
       end
 
       def v_multiplier
         @v_multiplier || VerticalMultiplier::VALUE_1
       end
 
-      def print_mode
-        @print_mode || PrintMode::NORMAL
+      def justification=(justify)
+        Justification.validate_justification justify
+        @justification = justify
       end
 
-      def h_multiplier=(multiplier)
-        HorizontalMultiplier.validate_multiplier multiplier
-        @h_multiplier = multiplier
-      end
-
-      def v_multiplier=(multiplier)
-        VerticalMultiplier.validate_multiplier multiplier
-        @v_multiplier = multiplier
+      def justification
+        @justification || Justification::LEFT
       end
 
       def to_epl
