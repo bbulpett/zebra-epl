@@ -13,7 +13,7 @@ module Zebra
       end
 
       def self.validate_justification(justification)
-        raise InvalidJustificationError unless validate_justification?(justification)
+        raise InvalidJustificationError unless valid_justification?(justification)
       end
     end
 
