@@ -8,7 +8,7 @@ module Zebra
       class InvalidNarrowBarWidthError < StandardError; end
       class InvalidWideBarWidthError   < StandardError; end
 
-      attr_accessor :height, :width
+      attr_accessor :height, :width, :justification
       attr_reader :type, :narrow_bar_width, :wide_bar_width
       attr_writer :print_human_readable_code
 
@@ -34,7 +34,8 @@ module Zebra
       def to_epl
         check_attributes
         human_readable = print_human_readable_code ? "B" : "N"
-        ["FB200,4,,\n", "FDFD", "B#{x}", y, rotation, type, narrow_bar_width, wide_bar_width, height, human_readable, "\"#{data}\""].join(",")
+        justification = "FB#{width},4,0,#{justification}\n^FDFD" || ""
+        [justification, "B#{x}", y, rotation, type, narrow_bar_width, wide_bar_width, height, human_readable, "\"#{data}\""].join(",")
       end
 
       private
