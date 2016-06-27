@@ -12,6 +12,15 @@ module Zebra
         @font_size = f
       end
 
+      def justification=(justification)
+        Justification.validate_justification justification
+        @justification = justification
+      end
+
+      def justification
+        @justification || Justification::LEFT
+      end
+
       def print_mode=(mode)
         PrintMode.validate_mode mode
         @print_mode = mode

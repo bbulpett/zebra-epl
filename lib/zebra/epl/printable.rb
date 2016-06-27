@@ -27,15 +27,6 @@ module Zebra
         @rotation || Rotation::NO_ROTATION
       end
 
-      def justification=(justify)
-        Justification.validate_justification justify
-        @justification = justify
-      end
-
-      def justification
-        @justification || Justification::LEFT
-      end
-
       private
 
       def has_data?
